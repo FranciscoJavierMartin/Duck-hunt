@@ -1,10 +1,11 @@
-package com.franciscomartin.duckhunt
+package com.franciscomartin.duckhunt.activities
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.franciscomartin.duckhunt.R
 import com.franciscomartin.duckhunt.commons.Constants
+import com.franciscomartin.duckhunt.goToActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
