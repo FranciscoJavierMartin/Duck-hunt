@@ -4,4 +4,9 @@
     <string name="login_start_game">Start game</string>
     <string name="login_nick_error_empty">Nick must contains at least 3 characters</string>
     <string name="login_nick_error_longer">Nick cannot contains 8 or more characters</string>
+    <string name="game_over">Game over</string>
+    <string name="game_restart">Restart</string>
+    <string name="game_exit">Exit</string>
+    <string name="game_duck_hunted">%1$d duck hunted</string>
+    <string name="game_ducks_hunted">%1$d ducks hunted</string>
 </resources>
