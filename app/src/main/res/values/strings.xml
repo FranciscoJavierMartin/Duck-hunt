@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DuckHunt</string>
+    <string name="login_nick_hint">Nick</string>
+    <string name="login_start_game">Start game</string>
 </resources>
