@@ -1,15 +1,18 @@
 package com.franciscomartin.duckhunt.activities
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Point
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.support.v7.app.AlertDialog
+import android.util.Log
 import android.view.Display
 import com.franciscomartin.duckhunt.R
 import com.franciscomartin.duckhunt.commons.Constants
+import com.franciscomartin.duckhunt.goToActivity
 import kotlinx.android.synthetic.main.activity_game.*
 import java.util.*
 
@@ -105,6 +108,9 @@ class GameActivity : AppCompatActivity() {
         }
 
         builder.setNegativeButton(R.string.game_exit){dialog, which ->
+            goToActivity<LoginActivity> {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
             dialog.dismiss()
         }
 

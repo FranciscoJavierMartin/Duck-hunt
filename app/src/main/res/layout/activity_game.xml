@@ -11,8 +11,8 @@
 
     <ImageView
             android:id="@+id/imageViewDuck"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/duck_size"
+            android:layout_height="@dimen/duck_size"
             app:srcCompat="@drawable/duck"
             app:layout_editor_absoluteX="141dp"
             app:layout_editor_absoluteY="239dp"/>
