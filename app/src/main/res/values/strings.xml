@@ -2,4 +2,6 @@
     <string name="app_name">DuckHunt</string>
     <string name="login_nick_hint">Nick</string>
     <string name="login_start_game">Start game</string>
+    <string name="login_nick_error_empty">Nick must contains at least 3 characters</string>
+    <string name="login_nick_error_longer">Nick cannot contains 8 or more characters</string>
 </resources>
