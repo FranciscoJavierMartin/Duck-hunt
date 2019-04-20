@@ -3,6 +3,7 @@ package com.franciscomartin.duckhunt.activities
 import android.graphics.Point
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.view.Display
 import com.franciscomartin.duckhunt.R
@@ -59,6 +60,18 @@ class GameActivity : AppCompatActivity() {
         display.getSize(size)
         screenWidth = size.x
         screenHeight = size.y
+    }
+
+    private fun initCountDownTimer() {
+        object:CountDownTimer(Constants.GAME_DURATION, Constants.GAME_INTERVAL){
+            override fun onTick(millisUntilFinished: Long) {
+                textViewTimer.text = "${millisUntilFinished/1000}s"
+            }
+
+            override fun onFinish() {
+                textViewTimer.text = "0s"
+            }
+        }.start()
 
     }
 }
