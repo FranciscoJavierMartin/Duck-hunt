@@ -1,6 +1,7 @@
 package com.franciscomartin.duckhunt
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.franciscomartin.duckhunt.commons.Constants

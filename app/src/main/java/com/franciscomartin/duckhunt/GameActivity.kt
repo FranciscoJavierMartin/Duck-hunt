@@ -1,5 +1,6 @@
 package com.franciscomartin.duckhunt
 
+import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.franciscomartin.duckhunt.commons.Constants
@@ -11,7 +12,8 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        val nick:String = intent.extras.getString(Constants.EXTRA_NICK)
-        textViewNick.text = nick
+        val nick:String? = intent.getStringExtra(Constants.EXTRA_NICK)
+        textViewNick.text = nick?.let { nick }
+
     }
 }
