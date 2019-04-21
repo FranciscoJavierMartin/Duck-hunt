@@ -90,6 +90,7 @@ class GameActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
+                moveDuckAfterTimeHandler.removeCallbacksAndMessages(null)
                 textViewTimer.text = "0s"
                 gameOver = true
                 showDialogGameOver()
@@ -118,11 +119,12 @@ class GameActivity : AppCompatActivity() {
             initCountDownTimer()
         }
 
-        builder.setNegativeButton(R.string.game_exit){dialog, _ ->
-            goToActivity<LoginActivity> {
+        builder.setNegativeButton(R.string.game_show_ranking){dialog, _ ->
+
+            dialog.dismiss()
+            goToActivity<RankingActivity> {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
-            dialog.dismiss()
         }
 
         val dialog = builder.create()
