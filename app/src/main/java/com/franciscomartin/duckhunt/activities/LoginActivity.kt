@@ -59,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
 
                 goToActivity<GameActivity> {
                     putExtra(Constants.EXTRA_NICKNAME, nickname)
+                    putExtra(Constants.EXTRA_ID, it.id)
                 }
 
             }

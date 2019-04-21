@@ -11,6 +11,7 @@ import android.view.Display
 import com.franciscomartin.duckhunt.R
 import com.franciscomartin.duckhunt.commons.Constants
 import com.franciscomartin.duckhunt.goToActivity
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_game.*
 import java.util.*
 
@@ -22,6 +23,8 @@ class GameActivity : AppCompatActivity() {
     private val random: Random = Random()
     private var gameOver: Boolean = false
     private lateinit var moveDuckAfterTimeHandler: Handler
+    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private lateinit var id: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +32,7 @@ class GameActivity : AppCompatActivity() {
 
         val nick:String? = intent.getStringExtra(Constants.EXTRA_NICKNAME)
         textViewNickname.text = nick?.let { nick }
+        id = intent.getStringExtra(Constants.EXTRA_ID)
 
         moveDuckAfterTimeHandler = Handler()
 
@@ -89,6 +93,7 @@ class GameActivity : AppCompatActivity() {
                 textViewTimer.text = "0s"
                 gameOver = true
                 showDialogGameOver()
+                saveResultOnFirestore()
             }
         }.start()
 
@@ -122,5 +127,11 @@ class GameActivity : AppCompatActivity() {
 
         val dialog = builder.create()
         dialog.show()
+    }
+
+    private fun saveResultOnFirestore(){
+        db.collection(Constants.USER_COLLECTION)
+            .document(id)
+            .update(Constants.DUCKS_FIELD, counter)
     }
 }
