@@ -21,7 +21,7 @@
             app:srcCompat="@drawable/title"/>
 
     <EditText
-            android:id="@+id/editTextNick"
+            android:id="@+id/editTextNickname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -42,8 +42,8 @@
             android:backgroundTint="@color/colorPrimary"
             android:text="@string/login_start_game"
             android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="@+id/editTextNick"
-            app:layout_constraintStart_toStartOf="@+id/editTextNick"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNick"/>
+            app:layout_constraintEnd_toEndOf="@+id/editTextNickname"
+            app:layout_constraintStart_toStartOf="@+id/editTextNickname"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNickname"/>
 
 </android.support.constraint.ConstraintLayout>

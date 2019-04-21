@@ -1,6 +1,5 @@
 package com.franciscomartin.duckhunt.activities
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Point
 import android.support.v7.app.AppCompatActivity
@@ -8,7 +7,6 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.support.v7.app.AlertDialog
-import android.util.Log
 import android.view.Display
 import com.franciscomartin.duckhunt.R
 import com.franciscomartin.duckhunt.commons.Constants
@@ -23,20 +21,20 @@ class GameActivity : AppCompatActivity() {
     private var screenHeight: Int = 0
     private val random: Random = Random()
     private var gameOver: Boolean = false
-    private lateinit var handler: Handler
+    private lateinit var moveDuckAfterTimeHandler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        val nick:String? = intent.getStringExtra(Constants.EXTRA_NICK)
-        textViewNick.text = nick?.let { nick }
+        val nick:String? = intent.getStringExtra(Constants.EXTRA_NICKNAME)
+        textViewNickname.text = nick?.let { nick }
 
-        handler = Handler()
+        moveDuckAfterTimeHandler = Handler()
 
         imageViewDuck.setOnClickListener {
 
-            handler.removeCallbacksAndMessages(null)
+            moveDuckAfterTimeHandler.removeCallbacksAndMessages(null)
 
             if(!gameOver){
                 counter ++
@@ -69,7 +67,7 @@ class GameActivity : AppCompatActivity() {
         imageViewDuck.x = randomX.toFloat()
         imageViewDuck.y = randomY.toFloat()
 
-        handler.postDelayed({moveDuck()},2000)
+        moveDuckAfterTimeHandler.postDelayed({moveDuck()},2000)
 
     }
 
@@ -108,14 +106,14 @@ class GameActivity : AppCompatActivity() {
 
         builder.setCancelable(false)
 
-        builder.setPositiveButton(R.string.game_restart){dialog, which ->  
+        builder.setPositiveButton(R.string.game_restart){_, _ ->
             counter = 0
             textViewCounter.text = "0"
             gameOver = false
             initCountDownTimer()
         }
 
-        builder.setNegativeButton(R.string.game_exit){dialog, which ->
+        builder.setNegativeButton(R.string.game_exit){dialog, _ ->
             goToActivity<LoginActivity> {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
