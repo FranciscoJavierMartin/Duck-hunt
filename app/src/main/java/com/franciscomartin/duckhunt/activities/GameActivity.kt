@@ -23,6 +23,7 @@ class GameActivity : AppCompatActivity() {
     private var screenHeight: Int = 0
     private val random: Random = Random()
     private var gameOver: Boolean = false
+    private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,11 @@ class GameActivity : AppCompatActivity() {
         val nick:String? = intent.getStringExtra(Constants.EXTRA_NICK)
         textViewNick.text = nick?.let { nick }
 
+        handler = Handler()
+
         imageViewDuck.setOnClickListener {
+
+            handler.removeCallbacksAndMessages(null)
 
             if(!gameOver){
                 counter ++
@@ -42,6 +47,7 @@ class GameActivity : AppCompatActivity() {
                     imageViewDuck.setImageResource(R.drawable.duck)
                     moveDuck()
                 }, 500)
+                
             }
 
         }
@@ -62,6 +68,8 @@ class GameActivity : AppCompatActivity() {
 
         imageViewDuck.x = randomX.toFloat()
         imageViewDuck.y = randomY.toFloat()
+
+        handler.postDelayed({moveDuck()},2000)
 
     }
 
